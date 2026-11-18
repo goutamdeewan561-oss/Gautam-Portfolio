@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Project Details — Gautam | Security, Frontend &amp; Creative Studio</title>
+    <meta name="description" content="Detailed overview of technical architecture, design execution, and project metrics by Gautam.">
+    <meta name="author" content="Gautam">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Mowa Design System Stylesheet -->
+    <link rel="stylesheet" href="css/mowa-theme.css">
+</head>
+
+<body>
+    <!-- 5-Column Grid Lines -->
+    <div class="mowa-grid-guide" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Magnetic Follower Cursor -->
+    <div id="mowa-cursor" aria-hidden="true"></div>
+
+    <!-- Floating Pill Navigation -->
+    <header class="mowa-nav">
+        <div class="container">
+            <div class="mowa-nav-inner">
+                <a href="index.html" class="mowa-logo" aria-label="Gautam Home">
+                    g<span class="dot">.</span>
+                </a>
+                <button type="button" class="mowa-theme-pill" id="theme-toggle" aria-label="Toggle dark and light theme">
+                    <span class="theme-icon-track">
+                        <span class="theme-icon-btn moon-btn"><i class="fas fa-moon"></i></span>
+                        <span class="theme-icon-btn sun-btn"><i class="fas fa-sun"></i></span>
+                    </span>
+                </button>
+                <div class="mowa-nav-actions">
+                    <a href="https://wa.me/923110324919" target="_blank" rel="noopener" class="mowa-whatsapp-pill" aria-label="Chat with Gautam on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <button type="button" class="mowa-menu-trigger" id="menu-toggle" aria-label="Open Navigation Menu">
+                    <span class="mowa-menu-dot"></span>
+                    <span>Menu</span>
+                    <span class="arrow">↗</span>
+                </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Fullscreen Swiss Overlay Menu -->
+    <div class="mowa-overlay" id="nav-overlay" aria-hidden="true">
+        <div class="mowa-overlay-content">
+            <nav class="mowa-overlay-links">
+                <a href="index.html" class="mowa-overlay-link"><span class="num">01</span>Home</a>
+                <a href="about.html" class="mowa-overlay-link"><span class="num">02</span>About</a>
+                <a href="projects.html" class="mowa-overlay-link"><span class="num">03</span>Projects</a>
+                <a href="cybersecurity.html" class="mowa-overlay-link"><span class="num">04</span>Security &amp; SOC</a>
+                <a href="resume.html" class="mowa-overlay-link"><span class="num">05</span>Resume</a>
+                <a href="blog.html" class="mowa-overlay-link"><span class="num">06</span>Blog</a>
+                <a href="contact.html" class="mowa-overlay-link"><span class="num">07</span>Contact</a>
+            </nav>
+            <div class="mowa-overlay-info">
+                <div>
+                    <h4>Direct Contact</h4>
+                    <p><a href="mailto:gautamdeewan629@gmail.com">gautamdeewan629@gmail.com</a></p>
+                    <p><a href="https://wa.me/923110324919" target="_blank" rel="noopener">+92 311 0324919</a></p>
+                </div>
+                <div>
+                    <h4>Headquarters</h4>
+                    <p>Hyderabad, Pakistan</p>
+                    <p>Founder, Glavion Solutions</p>
+                </div>
+                <div>
+                    <h4>Digital Profiles</h4>
+                    <p><a href="https://github.com/goutamdeewan561-oss" target="_blank" rel="noopener">GitHub ↗</a></p>
+                    <p><a href="https://www.linkedin.com/in/gautam-deewan-b76525382" target="_blank" rel="noopener">LinkedIn ↗</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="mowa-page-hero">
+            <div class="container">
+                <div class="mowa-eyebrow" id="projCategory">Project Details</div>
+                <h1 class="mowa-display-title" id="projTitle">Loading Project...</h1>
+                <p class="mowa-section-sub">
+                    In-depth breakdown of engineering architecture, interface design, and deployment specifications.
+                </p>
+            </div>
+        </section>
+
+        <!-- Details Content -->
+        <section class="container" style="padding: 60px 0 100px 0;">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 3.5rem;">
+                <!-- Main Detail Content -->
+                <div>
+                    <div style="border-radius: 28px; overflow: hidden; background: var(--mowa-surface); border: 1px solid var(--mowa-border); margin-bottom: 2.5rem;">
+                        <img id="projImage" src="" alt="Project Preview" style="width: 100%; max-height: 480px; object-fit: cover;">
+                    </div>
+
+                    <h2 class="mowa-section-title" style="font-size: 2rem; margin-bottom: 1rem;">Project Overview</h2>
+                    <p class="mowa-about-prose" id="projDesc" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;"></p>
+
+                    <div id="projGallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3rem;"></div>
+                </div>
+
+                <!-- Meta Sidebar -->
+                <div>
+                    <div class="mowa-skill-box" style="position: sticky; top: 120px;">
+                        <span class="mowa-grid-card-tag">Technical Specification</span>
+                        <h3 class="mowa-grid-card-title" style="font-size: 1.4rem;">Tech Stack &amp; Tools</h3>
+                        <div class="mowa-project-tech" id="projTech" style="margin: 1.5rem 0;"></div>
+
+                        <div id="projLinks" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;"></div>
+
+                        <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--mowa-border-subtle);">
+                            <a href="projects.html" class="mowa-footer-link" style="display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>Back to All Projects</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Swiss Modernist Footer -->
+    <footer class="mowa-footer">
+        <div class="container">
+            <div class="mowa-footer-cta">
+                <div class="mowa-eyebrow">Connect</div>
+                <h2>Ready to start your next project?</h2>
+                <a href="contact.html" class="mowa-btn-primary">
+                    <span>Start a Conversation</span>
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="mowa-footer-grid">
+                <div class="mowa-footer-col">
+                    <h4>About Gautam</h4>
+                    <p>SOC Analyst Level 1, React Frontend Developer, and Graphic Designer based in Hyderabad, Pakistan. Founder of Glavion Solutions.</p>
+                </div>
+                <div class="mowa-footer-col">
+                    <h4>Navigation</h4>
+                    <p><a href="index.html" class="mowa-footer-link">Home</a></p>
+                    <p><a href="about.html" class="mowa-footer-link">About Gautam</a></p>
+                    <p><a href="projects.html" class="mowa-footer-link">Selected Projects</a></p>
+                    <p><a href="cybersecurity.html" class="mowa-footer-link">Security &amp; SOC</a></p>
+                    <p><a href="resume.html" class="mowa-footer-link">Resume &amp; CV</a></p>
+                    <p><a href="contact.html" class="mowa-footer-link">Get in Touch</a></p>
+                </div>
+                <div class="mowa-footer-col">
+                    <h4>Direct Contact</h4>
+                    <p><a href="mailto:gautamdeewan629@gmail.com" class="mowa-footer-link">gautamdeewan629@gmail.com</a></p>
+                    <p><a href="https://wa.me/923110324919" target="_blank" rel="noopener" class="mowa-footer-link">+92 311 0324919 (WhatsApp)</a></p>
+                </div>
+                <div class="mowa-footer-col">
+                    <h4>Digital Presence</h4>
+                    <p><a href="https://github.com/goutamdeewan561-oss" target="_blank" rel="noopener" class="mowa-footer-link">GitHub ↗</a></p>
+                    <p><a href="https://www.linkedin.com/in/gautam-deewan-b76525382" target="_blank" rel="noopener" class="mowa-footer-link">LinkedIn ↗</a></p>
+                </div>
+            </div>
+
+            <div class="mowa-footer-bottom">
+                <div>&copy; 2026 Gautam. All rights reserved.</div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/mowa.js" defer></script>
+    <script>
+                const globalProjects = [
+            { id: "goroute-tour-kashmir", title: "Go Route — Travel Agency Brand & Visual System", category: "Graphic Design", description: "Comprehensive branding, departure schedules, and promotional poster campaign designed for northern Pakistan expeditions. Features bold typography and custom color palettes.", tech: ["Photoshop", "Illustrator", "Branding", "Social Media"], image: "assets/graphics/graphic_page_06.jpg", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "react-weather", title: "React Dynamic Weather Dashboard", category: "Frontend Web", description: "A high-performance weather dashboard built with React.js, featuring real-time meteorological data fetching and location-based forecasts. Integrates OpenWeather API with modular custom hooks and responsive styling.", tech: ["React", "API", "JavaScript", "Vite", "CSS3"], image: "assets/projects/android-weather.png", liveUrl: "https://react-weather-app-zeta-lime.vercel.app", githubUrl: "https://github.com/goutamdeewan561-oss/react-weather-app" },
+            { id: "siem-soc-lab", title: "Enterprise SIEM Lab & Real-Time Threat Hunting", category: "Security & SOC", description: "Configured a virtualized security operations center lab deploying Splunk and ELK Stack for log aggregation. Simulated brute-force and port scan attacks, parsed telemetry with Zeek and Snort IDS rules, and wrote Python triage alerts.", tech: ["Splunk", "ELK Stack", "Wireshark", "Snort", "Zeek", "Python"], image: "assets/projects/vapt-security.png", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "creative-agency-brochure", title: "Creative Agency Corporate Brochure & Collateral", category: "Graphic Design", description: "Multi-fold high-end corporate brochure designed for modern B2B creative studios. Incorporates clean Swiss grid alignments, subtle contrast blocks, and structured visual infographics.", tech: ["Illustrator", "InDesign", "Print CMYK", "Swiss Grid"], image: "assets/graphics/graphic_page_15.jpg", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "gym-branding", title: "Studio Gym 24/7 — High-Energy Fitness Campaign", category: "Graphic Design", description: "Dynamic commercial flyer campaign with high-contrast energetic color blocking, photo compositing, and bold promotional badges for a premier 24/7 fitness club.", tech: ["Photoshop", "Illustrator", "Print CMYK", "Social Media", "Advertising"], image: "assets/graphics/graphic_page_08.jpg", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "enterprise-vlan", title: "Enterprise Multi-VLAN Topology & Routing", category: "Networking & IT", description: "Segmented enterprise topology configured in Cisco Packet Tracer with 802.1Q inter-VLAN routing, redundant core switching, DHCP pools, and security ACLs to enforce Zero-Trust department isolation.", tech: ["Cisco Packet Tracer", "802.1Q VLAN", "DHCP / DNS", "ACLs", "Inter-VLAN Routing"], image: "assets/projects/vapt-security.png", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "ai-quiz", title: "AI Protected Security Quiz Portal", category: "Security & Web", description: "Security-focused quiz application with AI-based monitoring and technical stack transparency. Real-time anti-cheat telemetry and WebSockets.", tech: ["React", "Node.js", "AI Integration", "Socket.io"], image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1000", liveUrl: "https://ai-protected-quiz-app.vercel.app", githubUrl: "https://github.com/goutamdeewan561-oss/AI-Protected-Quiz-App" },
+            { id: "goroute-hunza", title: "Go Route — Hunza, Skardu & Naran Expedition", category: "Graphic Design", description: "Luxury expedition marketing identity and departure schedule for 12-day northern mountain adventure programs across Gilgit-Baltistan and Khyber Pakhtunkhwa.", tech: ["Photoshop", "Illustrator", "Typography", "Brochure Design"], image: "assets/graphics/graphic_page_07.jpg", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" },
+            { id: "island-tech-brochure", title: "Corporate Business Brochure — Island Tech", category: "Graphic Design", description: "Geometric tri-fold publication with angular polygons, gold and navy blue branding, and comprehensive corporate technology service breakdown.", tech: ["Adobe Illustrator", "Editorial Grid", "Print Production", "Vector Graphics"], image: "assets/graphics/graphic_page_17.jpg", liveUrl: "#", githubUrl: "https://github.com/goutamdeewan561-oss" }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id') || 'react-weather';
+            const project = globalProjects.find(p => p.id === projectId) || globalProjects[0];
+
+            if (project) {
+                document.getElementById('projTitle').innerText = project.title;
+                document.getElementById('projCategory').innerText = project.category.toUpperCase();
+                document.getElementById('projDesc').innerText = project.description;
+                
+                const imgEl = document.getElementById('projImage');
+                if (project.image) {
+                    imgEl.src = project.image;
+                    imgEl.alt = project.title;
+                }
+                
+                document.getElementById('projTech').innerHTML = project.tech.map(t => `<span>${t}</span>`).join('');
+                
+                let linksHtml = '';
+                if (project.liveUrl && project.liveUrl !== '#') {
+                    linksHtml += `<a href="${project.liveUrl}" target="_blank" class="mowa-btn-primary"><span>Launch Live Demo</span> <i class="fas fa-external-link-alt"></i></a>`;
+                }
+                if (project.githubUrl && project.githubUrl !== '#') {
+                    linksHtml += `<a href="${project.githubUrl}" target="_blank" class="mowa-btn-secondary"><span>View GitHub Source</span> <i class="fab fa-github"></i></a>`;
+                }
+                document.getElementById('projLinks').innerHTML = linksHtml;
+            }
+        });
+    </script>
+</body>
+
+</html>
