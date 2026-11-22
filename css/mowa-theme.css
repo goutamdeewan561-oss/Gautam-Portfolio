@@ -1,0 +1,2117 @@
+/* ==========================================================================
+   MOWA.STUDIO 1:1 RECREATION DESIGN SYSTEM
+   Aesthetic: Contemporary Austrian/Swiss Modernist Brutal-Minimalism
+   Tokens: Pitch Black (#000000), Electric Cobalt (#000DFF), High-Contrast White
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Mowa.studio Core Colors */
+    --mowa-bg: #000000;
+    --mowa-surface: #0c0c0e;
+    --mowa-surface-glass: rgba(255, 255, 255, 0.035);
+    --mowa-card-hover: rgba(255, 255, 255, 0.07);
+    
+    /* Mowa Signature Cobalt */
+    --mowa-accent: #000DFF;
+    --mowa-accent-glow: rgba(0, 13, 255, 0.35);
+    --mowa-accent-light: #2a35ff;
+    
+    /* Text Hierarchy */
+    --mowa-text: #FFFFFF;
+    --mowa-text-muted: rgba(255, 255, 255, 0.65);
+    --mowa-text-subtle: rgba(255, 255, 255, 0.38);
+    
+    /* Borders & Grids */
+    --mowa-border: rgba(255, 255, 255, 0.12);
+    --mowa-border-subtle: rgba(255, 255, 255, 0.05);
+    --mowa-grid-line: rgba(255, 255, 255, 0.035);
+    
+    /* Typography */
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Easings & Physics */
+    --ease-mowa: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Light Theme Mode */
+[data-theme="light"] {
+    --mowa-bg: #FBFBFC;
+    --mowa-surface: #FFFFFF;
+    --mowa-surface-glass: rgba(0, 0, 0, 0.03);
+    --mowa-card-hover: rgba(0, 0, 0, 0.06);
+    --mowa-text: #0A0A0A;
+    --mowa-text-muted: rgba(0, 0, 0, 0.65);
+    --mowa-text-subtle: rgba(0, 0, 0, 0.40);
+    --mowa-border: rgba(0, 0, 0, 0.10);
+    --mowa-border-subtle: rgba(0, 0, 0, 0.05);
+    --mowa-grid-line: rgba(0, 0, 0, 0.03);
+}
+
+/* Base Reset & Smooth Scroll */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--mowa-bg);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+body {
+    background-color: var(--mowa-bg);
+    color: var(--mowa-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+}
+
+::selection {
+    background: var(--mowa-accent);
+    color: #ffffff;
+}
+
+/* 5-Column Architectural Guide Grid */
+.mowa-grid-guide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.mowa-grid-guide span {
+    border-right: 1px solid var(--mowa-grid-line);
+    height: 100%;
+}
+.mowa-grid-guide span:first-child {
+    border-left: 1px solid var(--mowa-grid-line);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* ==========================================================================
+   MOWA SIGNATURE PILL NAVIGATION
+   ========================================================================== */
+.mowa-nav {
+    position: fixed;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.mowa-nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mowa-nav-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: auto;
+}
+
+/* Brand Monogram */
+.mowa-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--mowa-text);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    padding: 8px 18px;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: var(--transition);
+}
+
+.mowa-logo span.dot {
+    color: var(--mowa-accent);
+    margin-left: 1px;
+}
+
+.mowa-logo:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Center Pill Theme Toggle */
+.mowa-theme-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    padding: 6px 14px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    color: var(--mowa-text-muted);
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.mowa-theme-pill:hover {
+    color: var(--mowa-text);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mowa-theme-pill i {
+    font-size: 0.9rem;
+    transition: transform 0.4s var(--ease-mowa);
+}
+
+/* Right Navigation Actions Cluster */
+.mowa-nav-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* WhatsApp Action Pill (Placed directly to the left of Menu) */
+.mowa-whatsapp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--mowa-text);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 9px 18px;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mowa-whatsapp-pill i {
+    color: #25D366;
+    font-size: 1.1rem;
+    transition: transform 0.3s var(--ease-mowa);
+}
+
+.mowa-whatsapp-pill:hover {
+    border-color: #25D366;
+    background: rgba(37, 211, 102, 0.1);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
+    transform: translateY(-1px);
+}
+
+.mowa-whatsapp-pill:hover i {
+    transform: scale(1.15);
+}
+
+@media (max-width: 540px) {
+    .mowa-whatsapp-pill span {
+        display: none;
+    }
+    .mowa-whatsapp-pill {
+        padding: 9px 13px;
+    }
+}
+
+/* Right Menu Pill */
+.mowa-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--mowa-text);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 9px 20px;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mowa-menu-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mowa-accent);
+    display: inline-block;
+    box-shadow: 0 0 10px var(--mowa-accent);
+}
+
+.mowa-menu-trigger .arrow {
+    font-size: 0.85rem;
+    transition: transform 0.3s var(--ease-mowa);
+}
+
+.mowa-menu-trigger:hover {
+    border-color: var(--mowa-accent);
+    background: rgba(0, 13, 255, 0.1);
+}
+
+.mowa-menu-trigger:hover .arrow {
+    transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   FULLSCREEN MOWA OVERLAY MENU
+   ========================================================================== */
+.mowa-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.97);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s var(--ease-mowa);
+}
+
+.mowa-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mowa-overlay-content {
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+@media (max-width: 768px) {
+    .mowa-overlay-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.mowa-overlay-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mowa-overlay-link {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    transition: color 0.3s, transform 0.4s var(--ease-mowa);
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mowa-overlay-link span.num {
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--mowa-accent);
+}
+
+.mowa-overlay-link:hover {
+    color: #ffffff;
+    transform: translateX(16px);
+}
+
+.mowa-overlay-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2rem;
+    border-left: 1px solid var(--mowa-border);
+    padding-left: 3rem;
+}
+
+@media (max-width: 768px) {
+    .mowa-overlay-info {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--mowa-border);
+        padding-top: 2rem;
+    }
+}
+
+.mowa-overlay-info h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mowa-text-subtle);
+    margin-bottom: 0.5rem;
+}
+
+.mowa-overlay-info p,
+.mowa-overlay-info a {
+    color: var(--mowa-text-muted);
+    font-size: 1rem;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.3s;
+}
+
+.mowa-overlay-info a:hover {
+    color: var(--mowa-text);
+}
+
+/* ==========================================================================
+   HERO SECTION (3D CANVAS + OVERLAPPING MODERNIST STATEMENT)
+   ========================================================================== */
+.mowa-hero {
+    min-height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* WebGL 3D Canvas Background */
+#mowa-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.mowa-hero-body {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 0;
+}
+
+.mowa-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--mowa-text-subtle);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mowa-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--mowa-accent);
+}
+
+/* Oversized Lowercase Statement */
+.mowa-display-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--mowa-text);
+    margin-bottom: 2rem;
+}
+
+.mowa-typed-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    color: #2a35ff;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    min-height: 1.15em;
+    text-shadow: 0 0 30px rgba(0, 13, 255, 0.45);
+}
+
+.mowa-typed-cursor {
+    color: var(--mowa-accent);
+    font-weight: 300;
+    margin-left: 2px;
+    animation: mowaBlink 0.9s infinite;
+}
+
+@keyframes mowaBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.mowa-display-title .accent-word {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    transition: color 0.4s;
+}
+
+.mowa-display-title:hover .accent-word {
+    color: var(--mowa-text);
+    -webkit-text-stroke: 1px transparent;
+}
+
+.mowa-hero-desc {
+    max-width: 680px;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    color: var(--mowa-text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.mowa-hero-desc strong {
+    color: var(--mowa-text);
+    font-weight: 500;
+}
+
+/* Action Button Pills */
+.mowa-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+.mowa-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: var(--mowa-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px var(--mowa-accent-glow);
+    transition: var(--transition);
+}
+
+.mowa-btn-primary:hover {
+    background: var(--mowa-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(0, 13, 255, 0.5);
+}
+
+.mowa-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: var(--mowa-surface-glass);
+    color: var(--mowa-text);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+}
+
+.mowa-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: var(--mowa-card-hover);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .mowa-hero {
+        padding-top: 105px;
+        padding-bottom: 30px;
+    }
+    .mowa-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+    }
+    .mowa-display-title {
+        font-size: clamp(1.75rem, 6vw, 2.25rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.1rem;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+    }
+    .mowa-typed-wrapper {
+        font-size: 0.88em;
+        min-height: 1.2em;
+    }
+    .mowa-hero-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    }
+    .mowa-actions {
+        gap: 10px;
+        margin-bottom: 2.5rem;
+    }
+    .mowa-btn-primary,
+    .mowa-btn-secondary {
+        padding: 11px 22px;
+        font-size: 0.88rem;
+    }
+    #mowa-canvas {
+        opacity: 0.45;
+    }
+}
+
+/* 4-Stat Cards Row */
+.mowa-stats-row {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 992px) {
+    .mowa-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mowa-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    .mowa-stat-tile {
+        padding: 1.15rem 1rem;
+        border-radius: 16px;
+    }
+    .mowa-stat-num {
+        font-size: 1.75rem;
+    }
+    .mowa-stat-label {
+        font-size: 0.75rem;
+    }
+}
+
+.mowa-stat-tile {
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 20px;
+    padding: 1.75rem 1.5rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: var(--transition);
+}
+
+.mowa-stat-tile:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--mowa-card-hover);
+    transform: translateY(-4px);
+}
+
+.mowa-stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--mowa-text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.mowa-stat-num span.accent {
+    color: var(--mowa-accent);
+}
+
+.mowa-stat-label {
+    font-size: 0.85rem;
+    color: var(--mowa-text-muted);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   SERVICES SECTION WITH SIGNATURE "CIRCLE RIPPLE" MICRO-INTERACTION
+   ========================================================================== */
+.mowa-section {
+    padding: 120px 0;
+    position: relative;
+    border-top: 1px solid var(--mowa-border-subtle);
+}
+
+.mowa-section-head {
+    margin-bottom: 4rem;
+}
+
+.mowa-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--mowa-text);
+    margin-bottom: 1rem;
+}
+
+.mowa-section-sub {
+    font-size: 1.15rem;
+    color: var(--mowa-text-muted);
+    max-width: 600px;
+}
+
+/* Mowa Services List (.mowa-svc) */
+.mowa-svc-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.mowa-svc {
+    --fill: var(--mowa-accent);
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 1.5fr 2fr 80px;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    border-top: 1px solid var(--mowa-border);
+    text-decoration: none;
+    color: var(--mowa-text);
+    isolation: isolate;
+    overflow: hidden;
+    transition: padding 0.4s var(--ease-mowa);
+}
+
+.mowa-svc:last-child {
+    border-bottom: 1px solid var(--mowa-border);
+}
+
+/* Expanding Circular Radial Ripple from Cursor Coordinates */
+.mowa-svc::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    width: calc(var(--r, 1200px) * 2);
+    height: calc(var(--r, 1200px) * 2);
+    border-radius: 50%;
+    background: var(--fill);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mowa-svc.is-on::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.mowa-svc-num {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--mowa-text-subtle);
+    transition: color 0.3s;
+}
+
+.mowa-svc-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    transition: transform 0.4s var(--ease-mowa), color 0.3s;
+}
+
+.mowa-svc-desc {
+    color: var(--mowa-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-right: 2rem;
+    transition: color 0.3s;
+}
+
+.mowa-svc-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.mowa-svc-tags span {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mowa-svc-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    color: var(--mowa-text-subtle);
+    transition: transform 0.4s var(--ease-mowa), color 0.3s;
+}
+
+/* Hover States when is-on */
+.mowa-svc.is-on .mowa-svc-num {
+    color: rgba(255, 255, 255, 0.8);
+}
+.mowa-svc.is-on .mowa-svc-title {
+    transform: translateX(12px);
+    color: #ffffff;
+}
+.mowa-svc.is-on .mowa-svc-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+.mowa-svc.is-on .mowa-svc-arrow {
+    transform: rotate(45deg);
+    color: #ffffff;
+}
+
+@media (max-width: 992px) {
+    .mowa-svc {
+        grid-template-columns: 50px 1fr 40px;
+        gap: 1rem;
+    }
+    .mowa-svc-desc {
+        grid-column: 2 / 3;
+        padding-right: 0;
+    }
+}
+
+/* ==========================================================================
+   PROJECTS SHOWCASE SECTION (STACKED ROUNDED CARDS & PILL FILTERS)
+   ========================================================================== */
+.mowa-chips {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.mowa-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.mowa-chip {
+    flex-shrink: 0;
+    padding: 9px 20px;
+    border-radius: 100px;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    color: var(--mowa-text-muted);
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.mowa-chip:hover {
+    color: var(--mowa-text);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mowa-chip.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    font-weight: 600;
+}
+
+/* Project Cards Stack */
+.mowa-projects-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.mowa-project-card {
+    background: var(--mowa-surface);
+    border: 1px solid var(--mowa-border);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    text-decoration: none;
+    color: var(--mowa-text);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    transition: transform 0.5s var(--ease-mowa), border-color 0.4s;
+}
+
+@media (max-width: 992px) {
+    .mowa-project-card {
+        grid-template-columns: 1fr;
+        border-radius: 22px;
+    }
+}
+
+.mowa-project-card:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-6px);
+}
+
+.mowa-project-media {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    background: #050505;
+}
+
+@media (max-width: 992px) {
+    .mowa-project-media {
+        min-height: 240px;
+        max-height: 320px;
+        width: 100%;
+    }
+}
+
+.mowa-project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.7s var(--ease-mowa);
+}
+
+.mowa-project-card:hover .mowa-project-media img {
+    transform: scale(1.04);
+}
+
+.mowa-project-info {
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .mowa-project-info {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+.mowa-project-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mowa-accent);
+    margin-bottom: 1rem;
+}
+
+.mowa-project-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+}
+
+.mowa-project-desc {
+    color: var(--mowa-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.mowa-project-tech {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.mowa-project-tech span {
+    font-size: 0.8rem;
+    padding: 5px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--mowa-border-subtle);
+    border-radius: 100px;
+    color: var(--mowa-text-muted);
+}
+
+.mowa-project-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--mowa-text);
+}
+
+.mowa-project-cta i {
+    color: var(--mowa-accent);
+    transition: transform 0.3s var(--ease-mowa);
+}
+
+.mowa-project-card:hover .mowa-project-cta i {
+    transform: translate(4px, -4px);
+}
+
+/* ==========================================================================
+   INTERACTIVE FANNING CARDS DECK (.mowa-fandeck)
+   ========================================================================== */
+.mowa-fandeck-section {
+    padding: 100px 0;
+    border-top: 1px solid var(--mowa-border-subtle);
+}
+
+.mowa-fandeck-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+@media (max-width: 992px) {
+    .mowa-fandeck-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .mowa-fandeck-stage {
+        height: 340px;
+        overflow: hidden;
+    }
+    .mowa-fan-card {
+        width: 220px;
+        height: 300px;
+    }
+}
+
+.mowa-fandeck-stage {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mowa-fan-card {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    border-radius: 24px;
+    background: var(--mowa-surface);
+    border: 1px solid var(--mowa-border);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px));
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+    will-change: transform;
+}
+
+.mowa-fan-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fan Out on Hover */
+.mowa-fandeck-stage:hover .mowa-fan-card:nth-child(1) {
+    transform: rotate(-18deg) translate(-80px, -20px);
+}
+.mowa-fandeck-stage:hover .mowa-fan-card:nth-child(2) {
+    transform: rotate(-6deg) translate(-25px, -10px);
+}
+.mowa-fandeck-stage:hover .mowa-fan-card:nth-child(3) {
+    transform: rotate(8deg) translate(35px, 0px);
+}
+.mowa-fandeck-stage:hover .mowa-fan-card:nth-child(4) {
+    transform: rotate(20deg) translate(90px, 15px);
+}
+
+/* ==========================================================================
+   INFINITE CLIENT REVIEWS MARQUEE
+   ========================================================================== */
+.mowa-marquee-section {
+    padding: 80px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--mowa-border-subtle);
+    border-bottom: 1px solid var(--mowa-border-subtle);
+}
+
+.mowa-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: mowaScroll 35s linear infinite;
+}
+
+.mowa-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes mowaScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.mowa-review-card {
+    width: 380px;
+    margin: 0 1rem;
+    padding: 2rem;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    flex-shrink: 0;
+}
+
+.mowa-review-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--mowa-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.mowa-review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mowa-review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--mowa-accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.mowa-review-meta strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--mowa-text);
+}
+
+.mowa-review-meta small {
+    color: var(--mowa-text-subtle);
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   FOOTER (MOWA UNDERLINE ANIMATION & CLEAN SWISS COLUMNS)
+   ========================================================================== */
+.mowa-footer {
+    padding: 120px 0 60px 0;
+    border-top: 1px solid var(--mowa-border);
+    position: relative;
+    background: var(--mowa-bg);
+}
+
+.mowa-footer-cta {
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mowa-footer-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+}
+
+.mowa-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 992px) {
+    .mowa-footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .mowa-footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mowa-footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mowa-text-subtle);
+    margin-bottom: 1.5rem;
+}
+
+.mowa-footer-col p {
+    color: var(--mowa-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.mowa-footer-link {
+    display: inline-block;
+    padding: 6px 0;
+    color: var(--mowa-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    background: linear-gradient(currentColor, currentColor) left calc(100% - 2px) / 0 1px no-repeat;
+    transition: color 0.3s, background-size 0.4s var(--ease-mowa);
+}
+
+.mowa-footer-link:hover {
+    color: #ffffff;
+    background-size: 100% 1px;
+}
+
+.mowa-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--mowa-border-subtle);
+    color: var(--mowa-text-subtle);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .mowa-footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   MAGNETIC "VIEW" CURSOR
+   ========================================================================== */
+#mowa-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--mowa-accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    will-change: transform;
+    transform: translate3d(-100px, -100px, 0);
+    transition: width 0.3s var(--ease-mowa), height 0.3s var(--ease-mowa), background 0.3s, border-radius 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+#mowa-cursor.is-view {
+    width: 80px;
+    height: 80px;
+    background: #000DFF;
+    box-shadow: 0 0 35px rgba(0, 13, 255, 0.6);
+}
+
+#mowa-cursor.is-view::after {
+    content: "View ↗";
+    opacity: 1;
+}
+
+@media (hover: none) or (pointer: coarse) {
+    #mowa-cursor {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   SUBPAGE ARCHITECTURE & UTILITIES (ABOUT, PROJECTS, SECURITY, RESUME, CONTACT)
+   ========================================================================== */
+
+/* Subpage Hero */
+.mowa-page-hero {
+    padding-top: 170px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--mowa-border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.mowa-page-hero .mowa-display-title {
+    margin-bottom: 1rem;
+}
+
+/* 2-Column About Profile Grid */
+.mowa-about-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+    padding: 60px 0 100px 0;
+}
+
+@media (max-width: 992px) {
+    .mowa-about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.mowa-portrait-card {
+    position: sticky;
+    top: 100px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--mowa-surface);
+    border: 1px solid var(--mowa-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.mowa-portrait-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-mowa);
+}
+
+.mowa-portrait-card:hover img {
+    transform: scale(1.03);
+}
+
+.mowa-portrait-meta {
+    padding: 1.5rem;
+    background: var(--mowa-surface-glass);
+    border-top: 1px solid var(--mowa-border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mowa-portrait-meta strong {
+    font-size: 1.1rem;
+    font-family: var(--font-display);
+    color: var(--mowa-text);
+}
+
+.mowa-portrait-meta span {
+    font-size: 0.85rem;
+    color: var(--mowa-accent);
+    font-weight: 600;
+}
+
+.mowa-about-prose {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--mowa-text-muted);
+}
+
+.mowa-about-prose h2 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--mowa-text);
+    margin: 2.5rem 0 1rem 0;
+    letter-spacing: -0.02em;
+}
+
+.mowa-about-prose h2:first-child {
+    margin-top: 0;
+}
+
+.mowa-about-prose p {
+    margin-bottom: 1.5rem;
+}
+
+.mowa-about-prose strong {
+    color: var(--mowa-text);
+    font-weight: 500;
+}
+
+/* Skills Matrix Grid */
+.mowa-skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+    .mowa-skills-matrix {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mowa-skill-box {
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.mowa-skill-box:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--mowa-card-hover);
+    transform: translateY(-3px);
+}
+
+.mowa-skill-box h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--mowa-text);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mowa-skill-box h4 i {
+    color: var(--mowa-accent);
+}
+
+.mowa-skill-box ul {
+    list-style: none;
+    color: var(--mowa-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* 2-Column / 3-Column Subpage Cards Grid */
+.mowa-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 2rem;
+    padding: 40px 0 80px 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .mowa-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.mowa-grid-card {
+    background: var(--mowa-surface);
+    border: 1px solid var(--mowa-border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--mowa-text);
+    transition: transform 0.4s var(--ease-mowa), border-color 0.4s;
+}
+
+.mowa-grid-card:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-6px);
+}
+
+.mowa-grid-card-media {
+    position: relative;
+    height: 240px;
+    background: #08080c;
+    overflow: hidden;
+}
+
+.mowa-grid-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-mowa);
+}
+
+.mowa-grid-card:hover .mowa-grid-card-media img {
+    transform: scale(1.05);
+}
+
+.mowa-grid-card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.mowa-grid-card-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mowa-accent);
+    margin-bottom: 0.75rem;
+}
+
+.mowa-grid-card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+.mowa-grid-card-desc {
+    color: var(--mowa-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Minimalist Form Controls */
+.mowa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 680px;
+    margin: 40px 0 80px 0;
+}
+
+.mowa-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mowa-form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--mowa-text-muted);
+}
+
+.mowa-input, .mowa-textarea {
+    width: 100%;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    color: var(--mowa-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.mowa-input:focus, .mowa-textarea:focus {
+    border-color: var(--mowa-accent);
+    background: rgba(0, 13, 255, 0.04);
+    box-shadow: 0 0 20px var(--mowa-accent-glow);
+}
+
+.mowa-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+
+/* ==========================================================================
+   HERO PORTRAIT SHOWCASE (GAUTAM SPOTLIGHT)
+   ========================================================================== */
+
+.mowa-hero-body {
+    position: relative;
+    z-index: 2;
+}
+.mowa-hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.mowa-hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 3.5rem;
+}
+
+@media (max-width: 992px) {
+    .mowa-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.mowa-hero-portrait-wrap {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.mowa-hero-portrait-card {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    border-radius: 28px;
+    background: var(--mowa-surface);
+    border: 1px solid var(--mowa-border);
+    padding: 12px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 13, 255, 0.2);
+    transition: transform 0.6s var(--ease-mowa), border-color 0.4s, box-shadow 0.4s;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.mowa-hero-portrait-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(0, 13, 255, 0.6);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 13, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .mowa-hero-portrait-card {
+        max-width: 100%;
+        border-radius: 22px;
+        padding: 8px;
+    }
+    .mowa-portrait-image-container {
+        height: 380px;
+        border-radius: 16px;
+    }
+}
+
+.mowa-portrait-image-container {
+    width: 100%;
+    height: 440px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #090a10;
+}
+
+.mowa-hero-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.8s var(--ease-mowa);
+}
+
+.mowa-hero-portrait-card:hover .mowa-hero-img {
+    transform: scale(1.04);
+}
+
+.mowa-hero-portrait-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    background: var(--mowa-surface-glass);
+    border-radius: 16px;
+    border: 1px solid var(--mowa-border-subtle);
+}
+
+.mowa-pulse-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000DFF;
+    box-shadow: 0 0 12px #000DFF;
+    animation: mowaPulse 2s infinite ease-in-out;
+    flex-shrink: 0;
+}
+
+@keyframes mowaPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.mowa-hero-portrait-badge strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--mowa-text);
+}
+
+.mowa-hero-portrait-badge small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--mowa-text-muted);
+}
+
+
+/* ==========================================================================
+   PERFECT LIGHT MODE REFINEMENTS & CENTERED THEME TOGGLE
+   ========================================================================== */
+
+/* Centered Theme Switcher Pill in Navbar */
+.mowa-nav {
+    position: fixed;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.mowa-nav .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    .mowa-nav {
+        top: 14px;
+    }
+    .mowa-nav .container {
+        padding: 0 12px;
+    }
+    .mowa-logo {
+        padding: 6px 14px;
+        font-size: 1.25rem;
+    }
+    .mowa-nav-actions {
+        gap: 6px;
+    }
+    .mowa-whatsapp-pill {
+        padding: 7px 11px;
+    }
+    .mowa-whatsapp-pill span {
+        display: none;
+    }
+    .mowa-whatsapp-pill i {
+        font-size: 1.1rem;
+    }
+    .mowa-menu-trigger {
+        padding: 7px 14px;
+        font-size: 0.82rem;
+        gap: 6px;
+    }
+    .mowa-menu-trigger .arrow {
+        display: none;
+    }
+    .mowa-theme-pill {
+        padding: 2px;
+    }
+    .theme-icon-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+}
+
+.mowa-theme-pill {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--mowa-surface-glass);
+    border: 1px solid var(--mowa-border);
+    border-radius: 100px;
+    padding: 3px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.mowa-theme-pill:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateX(-50%) translateY(-1px);
+}
+
+.theme-icon-track {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.theme-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    color: var(--mowa-text-subtle);
+    transition: all 0.35s var(--ease-mowa);
+    pointer-events: none;
+}
+
+/* Dark Theme Toggle State */
+[data-theme="dark"] .theme-icon-btn.moon-btn {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] .theme-icon-btn.sun-btn {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Light Theme Toggle State */
+[data-theme="light"] .theme-icon-btn.sun-btn {
+    background: #000000;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+[data-theme="light"] .theme-icon-btn.moon-btn {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+/* Light Theme Comprehensive Visual System */
+[data-theme="light"] {
+    --mowa-bg: #F7F8FA;
+    --mowa-surface: #FFFFFF;
+    --mowa-surface-glass: rgba(255, 255, 255, 0.88);
+    --mowa-card-hover: rgba(0, 0, 0, 0.035);
+    
+    --mowa-accent: #000DFF;
+    --mowa-accent-glow: rgba(0, 13, 255, 0.22);
+    --mowa-accent-light: #1A28FF;
+
+    --mowa-text: #0E1015;
+    --mowa-text-muted: #4B5262;
+    --mowa-text-subtle: #7A8294;
+
+    --mowa-border: rgba(0, 0, 0, 0.09);
+    --mowa-border-subtle: rgba(0, 0, 0, 0.05);
+    --mowa-grid-line: rgba(0, 0, 0, 0.045);
+}
+
+[data-theme="light"] .mowa-logo,
+[data-theme="light"] .mowa-whatsapp-pill,
+[data-theme="light"] .mowa-menu-trigger,
+[data-theme="light"] .mowa-theme-pill {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.09);
+    color: #0E1015;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .mowa-logo:hover,
+[data-theme="light"] .mowa-whatsapp-pill:hover,
+[data-theme="light"] .mowa-menu-trigger:hover,
+[data-theme="light"] .mowa-theme-pill:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    background: #FFFFFF;
+}
+
+[data-theme="light"] .mowa-display-title {
+    color: #0E1015;
+}
+
+[data-theme="light"] .mowa-display-title .accent-word {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .mowa-display-title:hover .accent-word {
+    color: #0E1015;
+    -webkit-text-stroke: 1.5px transparent;
+}
+
+[data-theme="light"] .mowa-typed-wrapper {
+    color: #000DFF;
+    text-shadow: 0 0 25px rgba(0, 13, 255, 0.2);
+}
+
+[data-theme="light"] .mowa-hero-portrait-card {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07), 0 0 30px rgba(0, 13, 255, 0.08);
+}
+
+[data-theme="light"] .mowa-portrait-image-container {
+    background: #EAECEF;
+}
+
+[data-theme="light"] .mowa-hero-portrait-badge {
+    background: #F4F6F9;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .mowa-stat-tile {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .mowa-stat-tile:hover {
+    border-color: rgba(0, 0, 0, 0.18);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .mowa-chip {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #4B5262;
+}
+
+[data-theme="light"] .mowa-chip:hover {
+    border-color: rgba(0, 0, 0, 0.25);
+    color: #0E1015;
+}
+
+[data-theme="light"] .mowa-chip.active {
+    background: #0E1015;
+    color: #FFFFFF;
+    border-color: #0E1015;
+}
+
+[data-theme="light"] .mowa-project-card {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .mowa-project-card:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .mowa-project-media {
+    background: #EAECEF;
+}
+
+[data-theme="light"] .mowa-project-tech span {
+    background: #F1F3F6;
+    border-color: rgba(0, 0, 0, 0.06);
+    color: #4B5262;
+}
+
+[data-theme="light"] .mowa-review-card {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .mowa-fan-card {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .mowa-svc {
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #0E1015;
+}
+
+[data-theme="light"] .mowa-svc-tags span {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #4B5262;
+}
+
+[data-theme="light"] .mowa-overlay {
+    background: rgba(247, 248, 250, 0.98);
+}
+
+[data-theme="light"] .mowa-overlay-link {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .mowa-overlay-link:hover {
+    color: #0E1015;
+}
+
+[data-theme="light"] .mowa-btn-secondary {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #0E1015;
+}
+
+[data-theme="light"] .mowa-btn-secondary:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    background: #F4F6F9;
+}
+
+[data-theme="light"] .mowa-skill-box,
+[data-theme="light"] .mowa-grid-card,
+[data-theme="light"] .mowa-portrait-card {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .mowa-input,
+[data-theme="light"] .mowa-textarea {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #0E1015;
+}
+
+/* ==========================================================================
+   VIEW BUTTON ON PROJECT PANELS
+   ========================================================================== */
+.mowa-project-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mowa-btn-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: var(--mowa-accent);
+    color: #ffffff !important;
+    border: 1px solid var(--mowa-accent);
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--mowa-accent-glow);
+    transition: var(--transition);
+}
+
+.mowa-btn-view:hover {
+    background: var(--mowa-accent-light);
+    border-color: var(--mowa-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 13, 255, 0.5);
+}
+
+.mowa-btn-view i {
+    font-size: 0.85rem;
+    transition: transform 0.3s var(--ease-mowa);
+}
+
+.mowa-btn-view:hover i {
+    transform: translate(3px, -3px);
+}
+
+/* Floating View Badge on Media Image Panel */
+.mowa-media-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 100px;
+    padding: 8px 18px;
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.mowa-project-card:hover .mowa-media-badge {
+    background: var(--mowa-accent);
+    border-color: var(--mowa-accent);
+    box-shadow: 0 0 20px var(--mowa-accent-glow);
+    transform: translateY(-2px);
+}
